@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        vector<int> ret(0);
+        int j = 0;
+        while (j <= num){
+            if (j == 0)
+            ret.push_back(0);
+            if (j == 1)
+            ret.push_back(1);
+            if (j >= 2){
+                int newnum = j;
+                int digit = 1;
+                    while( (newnum = newnum / 2)> 0)
+                    { 
+                    digit ++;
+                    }
+                int add = j - pow(2, digit -1);
+                ret.push_back(ret[add] + 1);
+            }
+            j ++;
+            }
+            return ret;
+        }
+};
