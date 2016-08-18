@@ -11,7 +11,7 @@ public:
             if (j >= 2){
                 int newnum = j;
                 int digit = 1;
-                    while( (newnum = newnum / 2)> 0)
+                    while( (newnum = newnum / 2)> 0) // Noting the precedancy of computatopm
                     { 
                     digit ++;
                     }
