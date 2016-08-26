@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        auto beg = nums.begin();
+        auto end = nums.end();
+        int num = *beg;
+        beg ++;
+        while (beg != end){
+            num = num ^ *beg;
+            beg ++;
+        }
+        return num;
+    }
+};
