@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int getSum(int a, int b) {
+        if (b == 0)
+        return a;
+        int sum = a ^ b;
+        int carry = (a & b) << 1;
+        return getSum(sum, carry);
+    }
+};
+
+// 关键是明白加法器的道理，采用异或进行加法，同时采用一个进位。
+// 最后的getSum一定要加上return。
