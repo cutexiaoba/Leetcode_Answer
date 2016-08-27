@@ -1,0 +1,26 @@
+class Solution {
+public:
+vector<int> twoSum(vector<int> &numbers, int target) {
+  auto beg = numbers.begin();
+  auto end = numbers.end();
+  auto left = beg;
+  for(; *left + *(left + 1) < target; left++);
+  auto itl = beg;
+  auto itr = left + 1;
+      int numofit = 1;
+  while ( (*itl + *itr != target) ){
+    itr = left + 1;
+    if (numofit ==1)
+      itl --;
+    itl ++;
+    while((itr != end) && (*itl + *itr < target) ){
+      itr ++;
+    }
+    numofit++;
+  }
+  vector<int> ret(0);
+  ret.push_back(itl - numbers.begin() + 1);
+  ret.push_back(itr - numbers.begin() + 1);
+  return ret;
+}
+};
