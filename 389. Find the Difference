@@ -1,0 +1,13 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        int it = 0;
+        char ret = 0;
+        for(auto c : s){
+            ret = c ^ t[it] ^ ret;
+            it ++;
+        }
+        ret = ret ^ t[it];
+        return ret;
+    }
+};
