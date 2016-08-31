@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int x = 0;
+        vector<int> ret{0 ,0};
+        for (auto i : nums){
+            x ^= i;
+        }
+        ret[0] = x;
+        ret[1] = x;
+        int j = 1;
+        while ((x & j) == 0)
+        j = j << 1;
+        for (auto i : nums){
+            if (i & j){
+                ret[0] ^= i;
+            }
+            else ret[1] ^= i;
+        }
+        return ret;
+    }
+};
