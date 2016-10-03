@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        std::vector<int> ret(nums.size(),1);
+        auto it1 = ret.begin() + 1;
+        auto it2 = nums.begin();
+        while(it1 != ret.end()){
+            *it1 = *(it1 - 1) * (*it2);
+            it1 ++;
+            it2 ++;
+        }
+        auto rit = ret.rbegin() + 1;
+        auto rit2 = nums.rbegin() + 1;
+        int right = nums.back();
+        while(rit != ret.rend()){
+            *rit = *rit * right;
+            right = right * (*rit2);
+            rit ++;
+            rit2 ++;
+        }
+        return ret;
+    }
+};
