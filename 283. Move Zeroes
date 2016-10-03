@@ -1,0 +1,16 @@
+\\ When you are required to remove zero; don't remove zero;
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        auto it = nums.begin();
+        auto cursor = it;
+        while(it != nums.end()){
+            if(*it != 0){
+                swap(*it, *cursor);
+                cursor ++;
+            }
+
+        it ++;
+        }
+    }
+};
