@@ -1,0 +1,14 @@
+/* convert between set and vector*/
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        std::set<int> s(nums1.begin(), nums1.end());
+        std::set<int> ret;
+        for(auto i : nums2){
+            if(s.find(i) != s.end())
+            ret.insert(i);
+        }
+        std::vector<int> realret(ret.begin(), ret.end());
+        return realret;
+    }
+};
