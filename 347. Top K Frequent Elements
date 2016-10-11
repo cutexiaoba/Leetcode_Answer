@@ -1,0 +1,27 @@
+/* The use of priority_queue*/
+class Solution {
+public:
+  vector<int> topKFrequent(vector<int>& nums, int k) {
+    std::map<int, int> hstable;
+    for(auto i : nums){
+      if(hstable.find(i) == hstable.end())
+        hstable.insert({i,1});
+      else hstable[i]++;
+    }
+    struct LessThan{
+      bool operator()(const std::pair<int, int> &lhs, const std::pair<int, int> &rhs) const
+      {
+        return lhs.second < rhs.second;
+      }
+    };
+    std::priority_queue<std::pair <int,int>, std::vector<std::pair <int,int>>, LessThan> p;
+    for(auto c : hstable)
+      p.push(c);
+    std::vector<int> ret;
+    for(int i = 0; i < k; i++){
+      ret.push_back(p.top().first);
+      p.pop();
+    }
+    return ret;
+  }
+};
