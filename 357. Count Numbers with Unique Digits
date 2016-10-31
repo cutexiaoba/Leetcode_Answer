@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int countNumbersWithUniqueDigits(int n) {
+       if(n==0)
+       return 1;
+       int ret = 9;
+       int range = 9;
+       int index = n;
+       while(index > 1){
+           ret *= range;
+           index--;
+           range--;
+       }
+       return ret + countNumbersWithUniqueDigits(n - 1);
+    }
+};
