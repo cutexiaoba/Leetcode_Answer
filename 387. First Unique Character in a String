@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        std::map<char, std::pair<int, int>> Hash_Map;
+        int index = 0;
+        for(const char &c : s){
+            Hash_Map[c].first ++;
+            Hash_Map[c].second = index;
+            index ++;
+        }
+        
+        int cur_i = s.size();
+        for(const auto &m : Hash_Map){
+            if(m.second.first == 1){
+                if(m.second.second  < cur_i)
+                cur_i = m.second.second;
+            }
+        }
+        
+        if(cur_i == s.size())
+        return -1;
+        else 
+        return cur_i;
+    }
+};
